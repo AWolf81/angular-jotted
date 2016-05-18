@@ -1,5 +1,10 @@
 import chai from 'chai';
-import Library from '../lib/library.js';
+import angular from 'angular';
+import 'joddet';
+import 'marked';
+import 'codemirror';
+
+import angularJotted from '../lib/angular-jotted.js';
 
 chai.expect();
 
@@ -9,11 +14,11 @@ var lib;
 
 describe('Given an instance of my library', function () {
   before(function () {
-    lib = new Library();
+    lib = new angularJotted();
   });
   describe('when I need the name', function () {
     it('should return the name', () => {
-      expect(lib.name).to.be.equal('Library');
+      expect(lib).to.be.equal('angular-jotted');
     });
   });
 });

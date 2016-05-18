@@ -1,0 +1,11 @@
+/*jottedDir.css*/
+.jotted-button-help {
+    position: absolute;
+    top: 0.52em;
+    right: 5em;
+    z-index: 3;
+}
+
+.jotted {
+    height: 420px;
+}
