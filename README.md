@@ -1,7 +1,7 @@
 # What is JottedJs?
 
-Jotted is a javascript playground like jsFiddle, jsbin, plunkr etc. for
-self-hosting.
+[Jotted](https://github.com/ghinda/jotted) is a javascript playground like 
+jsFiddle, jsbin, plunkr etc. for self-hosting.
 
 # Live demo
 
@@ -67,7 +67,9 @@ This directive is very alpha and under heavy development.
 - Concat mutliple js files into JS pane
 - Reduce dependencies --> only Jotted, Angular & Codemirror
 - Reduce stylesheets of the library
+- Add unit tests
 
 # Project setup from Webpack library starter
 
-For the setup of this project I've used [webpack-library-starter](https://github.com/krasimir/webpack-library-starter)
+For the setup of this project I've used 
+[webpack-library-starter](https://github.com/krasimir/webpack-library-starter)
