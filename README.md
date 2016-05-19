@@ -1,80 +1,73 @@
-# Webpack library starter
+# What is JottedJs?
 
-Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library)
+Jotted is a javascript playground like jsFiddle, jsbin, plunkr etc. for
+self-hosting.
 
-## Features
+# Live demo
 
-* Webpack based.
-* ES6 as a source.
-* Exports in a [umd](https://github.com/umdjs/umd) format so your library works everywhere.
-* ES6 test setup with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/).
-* Linting with [ESLint](http://eslint.org/).
+Please have a look at this [jsfiddle](https://jsfiddle.net/awolf2904/79z5o7sf/)
+to see the directive in action.
 
-## Process
+# Why I've created a wrapper directive for Jotted?
 
-```
-ES6 source files
-       |
-       |
-    webpack
-       |
-       +--- babel, eslint
-       |
-  ready to use
-     library
-  in umd format
-```
+- easier integration in existing AngularJs projects just add `<jotted/>` and
+  `angular.module('yourApp', ['aw-jotted'])`.
+- better data handling (e.g. add the snippets to localstorage or to
+  a database is very easy)
+- extending Jotted with addional features like loading/saving Gists etc. is no
+  big deal.
 
-## Getting started
+# Required dependencies
 
-1. Setting up the name of your library
-  * Open `webpack.config.js` file and change the value of `libraryName` variable.
-  * Open `package.json` file and change the value of `main` property so it matches the name of your library.
-2. Build your library
-  * Run `npm install` to get the project's dependencies
-  * Run `npm run build` to produce minified version of your library.
-3. Development mode
-  * Having all the dependencies installed run `npm run dev`. This command will generate an non-minified version of your library and will run a watcher so you get the compilation on file change.
-4. Running the tests
-  * Run `npm run test`
+(Dependencies will be reduced soon because setup is too complicated at the 
+moment.)
 
-## Scripts
+- AngularJs
+- Codemirror and some addons
+- Jotted
+- Marked (will be removed later)
+- AngularMarked (will be removed later)
+- AngularUiBootstrap (will be replaced with a lightweight popover library
+  bundled into the library)
 
-* `npm run build` - produces production version of your library under the `lib` folder
-* `npm run dev` - produces development version of your library and runs a watcher
-* `npm run test` - well ... it runs the tests :)
+# Usage
+Add `angular.module('yourApp', ['aw-jotted'])` to your app as dependency.
 
-## Readings
+In you markup add:
 
-* [Start your own JavaScript library using webpack and ES6](http://krasimirtsonev.com/blog/article/javascript-library-starter-using-webpack-es6)
+    <jotted config="yourConfig"></jotted>
 
-## Misc
-
-### An example of using dependencies that shouldn’t be resolved by webpack, but should become dependencies of the resulting bundle
-
-In the following example we are excluding React and Lodash:
-
-```js
-{
-  devtool: 'source-map',
-  output: {
-    path: '...',
-    libraryTarget: 'umd',
-    library: '...'
-  },
-  entry: '...',
-  ...
-  externals: {
-    react: 'react'
-    // Use more complicated mapping for lodash.
-    // We need to access it differently depending
-    // on the environment.
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: '_',
-      root: '_'
+And in your controller
+    
+    $scope.yourConfig = {
+        files: [{
+            type: 'css',
+            content: ''
+        },
+        {
+            type: 'js',
+            content: 'console.log(\'Hello world\');'
+        }, 
+        {
+            type: 'html',
+            content: '<h1>Demo</h1>'
+        }]
     }
-  }
-}
-```
+
+# Status of the directive
+
+This directive is very alpha and under heavy development.
+
+# Todos
+
+- Check UMD loading (JSfiddle setup was hard to create, needed to use requireJS)
+- Add Gist selection by user with Description and Url as selection
+- Gist loading (working by entering an ID, needs to be improved)
+- Gist saving (not added yet) --> save to a public gist
+- Concat mutliple js files into JS pane
+- Reduce dependencies --> only Jotted, Angular & Codemirror
+- Reduce stylesheets of the library
+
+# Project setup from Webpack library starter
+
+For the setup of this project I've used [webpack-library-starter](https://github.com/krasimir/webpack-library-starter)
